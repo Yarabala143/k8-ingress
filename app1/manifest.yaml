@@ -8,7 +8,8 @@ metadata:
     project: roboshop
     app: app1
 spec:
-  replicas: 2
+  #replicas: 2
+  replicas: 1
   selector:
     # these labels are used to select pods
     matchLabels:
@@ -26,7 +27,7 @@ spec:
     spec:
       containers:
       - name: app1
-        image: joindevops/app1:v1
+        image: satishyarabala/app1:v1
 ---
 apiVersion: v1
 kind: Service
@@ -48,7 +49,7 @@ metadata:
   name: app1
   annotations:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:160885265516:certificate/a1f7483d-ee32-446c-a9b9-e7fdcca18ff6
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:163885031330:certificate/164bdc69-9cf8-4e12-87aa-fc5689c06d95
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/tags: Environment=dev,Project=roboshop
     alb.ingress.kubernetes.io/target-type: ip
@@ -56,7 +57,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: "app1.daws86s.fun"
+  - host: "app1.yarabala.space"
     http:
       paths:
       - pathType: Prefix
